@@ -1,6 +1,6 @@
 <template>
-    <div class="vu-text-input {{ class }}" :class="stateClasses">
-        <label v-show="!!label" class="vu-text-input__label {{labelClass}}">{{ label }}</label>
+    <div class="vu-text-input" :class="stateClasses">
+        <label v-show="!!label" class="vu-text-input__label">{{ label }}</label>
         <div class="vu-text-input__control">
             <input
                 class="vu-input"
@@ -14,8 +14,8 @@
 </template>
 
 <script>
-    import VuFieldMixin from 'VuFieldMixin';
-    import VuUuid from 'core/utils/VuUuid';
+    import VuFieldMixin from './VuFieldMixin';
+    import VuUuid from '../../shared/utils/VuUuid';
 
     export default {
       name: 'VuInput',

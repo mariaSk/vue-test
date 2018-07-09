@@ -1,41 +1,47 @@
 <template>
   <div id="app">
-    <todo-list v-bind:todos="todos"></todo-list>
-    <create-todo v-on:create-todo="addTodo"></create-todo>
+    <main-header/>
+    <div class="wrapper">
+      <div class="container">
+        <div class="row">
+          <div class="col-2">
+            <main-nav-bar />
+          </div>
+          <div class="col-10">
+            <div class="main-container">
+              <router-view />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
-import CreateTodo from './todo/CreateTodo';
-import TodoList from './todo/TodoList';
+import MainHeader from './template/MainHeader';
+import MainNavBar from './template/MainNavBar';
 
 export default {
   name: 'app',
   components: {
-    CreateTodo,
-    TodoList,
-  },
-  data () {
-    return {
-      todos: [{
-        title: 'Todo A',
-        project: 'Project A',
-        done: true,
-      }, {
-        title: 'Todo B',
-        project: 'Project B',
-        done: false,
-      }, {
-        title: 'Todo C',
-        project: 'Project C',
-        done: false,
-      }],
-    }
-  },
-  methods: {
-    addTodo(todo) {
-      this.todos.push(todo);
-    },
+    MainHeader,
+    MainNavBar,
   },
 }
 </script>
+
+<style lang="scss">
+  @import "shared/styles/reset";
+  @import "shared/styles/global";
+
+  .wrapper {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: row;
+  }
+
+  .main-container {
+    padding: 20px 15px;
+  }
+</style>

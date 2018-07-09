@@ -1,5 +1,5 @@
-var path = require('path')
-var webpack = require('webpack')
+var path = require('path');
+var webpack = require('webpack');
 
 module.exports = {
   entry: './src/main.js',
@@ -44,7 +44,7 @@ module.exports = {
             'scss': [
               'vue-style-loader',
               'css-loader',
-              'sass-loader'
+              'sass-loader',
             ],
             'sass': [
               'vue-style-loader',
@@ -66,7 +66,18 @@ module.exports = {
         options: {
           name: '[name].[ext]?[hash]'
         }
-      }
+      },
+      /*{
+        test: /\.(jpg|png|webp|gif|eot|otf|ttf|woff|woff2|ani)$/,
+        loader: "url-loader",
+        options: {
+          include: [
+            path.resolve(__dirname, './src/assets/')  // а тут надо прописать имя папки откуда будет брать все картинки
+          ],
+          name: "[name].[hash:20].[ext]",
+          limit: 10000
+        }
+      },*/
     ]
   },
   resolve: {

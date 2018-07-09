@@ -1,7 +1,10 @@
 <template>
-    <div class="ui basic content center aligned segment">
-        <p>Comleted Tasks: {{ todos.filter(todo => {return todo.done === true}).length }}</p>
-        <p>Pending Tasks: {{ todos.filter(todo => {return todo.done === false}).length }}</p>
+    <div class="todo-list">
+        <div class="p-3 mb-2 border bg-light">
+            <div>Comleted Tasks: {{ todos.filter(todo => {return todo.done === true}).length }}</div>
+            <div>Pending Tasks: {{ todos.filter(todo => {return todo.done === false}).length }}</div>
+        </div>
+
         <todo v-for="todo in todos"
               v-bind:todo="todo"
               v-on:delete-todo="deleteTodo"
