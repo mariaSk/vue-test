@@ -1,16 +1,16 @@
 <template>
     <div>
-        <vu-input-text />
+        <vu-input v-bind:max-length="50" v-bind:required="true" />
     </div>
 </template>
 
 <script>
-    import VuInputText from '../../components/form/VuInputText';
+    import VuInput from '../../components/form/VuInput';
 
     export default {
       name: 'InputTextPage',
       components: {
-        VuInputText,
+        VuInput,
       }
     };
 </script>

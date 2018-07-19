@@ -1,14 +1,30 @@
 export default {
   props: {
-    value: {},
+    id: String,
     name: String,
-    class: String,
+    type: String,
+    disabled: {
+      type: Boolean,
+      default: false,
+    },
+    focused: {
+      type: Boolean,
+      default: false,
+    },
+    value: {},
     placeholder: String,
-    error: Boolean,
-    disabled: Boolean,
-    focused: Boolean,
-    readonly: Boolean,
-    required: Boolean,
+    error: {
+      type: Boolean,
+      default: false,
+    },
+    readonly: {
+      type: Boolean,
+      default: false,
+    },
+    required: {
+      type: Boolean,
+      default: false,
+    },
     maxLength: Number,
     minLength: Number,
     label: String,
@@ -34,8 +50,6 @@ export default {
         type: this.type,
         id: this.id,
         name: this.name,
-        class: this.class,
-        error: this.error,
         disabled: this.disabled,
         focused: this.focused,
         required: this.required,
@@ -43,8 +57,6 @@ export default {
         readonly: this.readonly,
         maxlength: this.maxlength,
         minLength: this.minLength,
-        label: this.label,
-        labelClass: this.labelClass,
       }
     },
     stateClasses() {
@@ -63,6 +75,15 @@ export default {
     },
     onBlur() {
       this.focused = false;
+    },
+    onChange() {
+
+    },
+    onClickClear() {
+      this.model = '';
+    },
+    onClickLink() {
+
     }
   }
 };
