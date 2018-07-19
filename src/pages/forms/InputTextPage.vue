@@ -5,7 +5,7 @@
 </template>
 
 <script>
-    import VuInputText from '../components/form/VuInputText';
+    import VuInputText from '../../components/form/VuInputText';
 
     export default {
       name: 'InputTextPage',

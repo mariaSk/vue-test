@@ -4,7 +4,7 @@
     <div class="wrapper">
       <div class="container">
         <div class="row">
-          <div class="col-2">
+          <div class="col-2 pl-0">
             <main-nav-bar />
           </div>
           <div class="col-10">

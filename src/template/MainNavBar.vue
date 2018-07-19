@@ -3,6 +3,11 @@
         <ul class="navbar-nav mr-auto">
             <li class="nav-item" v-for="item of navbar">
                 <router-link class="nav-link" v-bind:to="item.href" >{{ item.title }}</router-link>
+                <ul class="pl-3" v-if="item.items && item.items.length > 0">
+                    <li class="nav-item" v-for="sub of item.items">
+                        <router-link class="nav-link" v-bind:to="sub.href" >{{ sub.title }}</router-link>
+                    </li>
+                </ul>
             </li>
         </ul>
     </nav>

@@ -1,8 +1,14 @@
 <template>
     <div class="header">
         <div class="header__inner container">
-            <h1>Vue Library</h1>
-            <main-nav/>
+            <div class="row w-100 h-100">
+                <div class="col-2 pr-0">
+                    <h1>Vue Library</h1>
+                </div>
+                <div class="col-10 pl-0">
+                    <main-nav/>
+                </div>
+            </div>
         </div>
     </div>
 </template>
