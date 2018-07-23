@@ -11,7 +11,9 @@ export default {
       type: Boolean,
       default: false,
     },
-    value: {},
+    value: {
+      type: [String, Boolean, Object, Number],
+    },
     placeholder: String,
     error: {
       type: Boolean,
@@ -32,6 +34,10 @@ export default {
     size: {
       type: String,
       default: 'lg',
+    },
+    styleClass: {
+      type: String,
+      default: 'teal',
     },
     clear: {
       type: Boolean,
