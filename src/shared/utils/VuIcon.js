@@ -5,7 +5,9 @@ import { library } from '@fortawesome/fontawesome-svg-core';
 import {
   faCheck,
   faEdit,
+  faLink,
   faPlus,
+  faTimes,
   faTrashAlt,
 } from '@fortawesome/free-solid-svg-icons';
 
@@ -13,7 +15,9 @@ import {
 library.add(
   faCheck,
   faEdit,
+  faLink,
   faPlus,
+  faTimes,
   faTrashAlt,
 );
 

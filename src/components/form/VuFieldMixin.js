@@ -3,11 +3,11 @@ export default {
     id: String,
     name: String,
     type: String,
-    disabled: {
+    focused: {
       type: Boolean,
       default: false,
     },
-    focused: {
+    disabled: {
       type: Boolean,
       default: false,
     },
@@ -29,10 +29,29 @@ export default {
     minLength: Number,
     label: String,
     labelClass: String,
+    size: {
+      type: String,
+      default: 'lg',
+    },
+    clear: {
+      type: Boolean,
+      default: false,
+    },
+    link: {
+      type: Boolean,
+      default: false,
+    }
   },
   data() {
     return {
       localValue: this.value,
+      field: {
+        value: null,
+        focused: this.$props.focused,
+        disabled: this.$props.disabled,
+        required: this.$props.required,
+        placeholder: this.$props.placeholder,
+      }
     }
   },
   computed: {
@@ -47,43 +66,72 @@ export default {
     attributes() {
       return {
         ...this.$attrs,
-        type: this.type,
-        id: this.id,
-        name: this.name,
-        disabled: this.disabled,
-        focused: this.focused,
-        required: this.required,
-        placeholder: this.placeholder,
-        readonly: this.readonly,
-        maxlength: this.maxlength,
-        minLength: this.minLength,
+        type: this.$props.type,
+        id: this.$props.id,
+        name: this.$props.name,
+        disabled: this.field.disabled,
+        focused: this.field.focused,
+        required: this.field.required,
+        placeholder: this.field.placeholder,
+        readonly: this.$props.readonly,
+        maxlength: this.$props.maxlength,
+        minLength: this.$props.minLength,
       }
     },
     stateClasses() {
       return {
-        'focus': this.focused,
+        'focus': this.field.focused,
         'has-value': !!this.localValue,
         'has-error': this.error,
-        'required': this.required,
-        'disabled': this.disabled,
+        'required': this.field.required,
+        'disabled': this.field.disabled,
       }
+    },
+  },
+  watch: {
+    model () {
+      this.setValue();
+    },
+    localValue (val) {
+      this.$emit('input', val);
+    },
+    value (val) {
+      this.localValue = val;
     }
   },
   methods: {
+    setValue () {
+      this.field.value = this.model;
+    },
+    setPlaceholder (value = this.placeholder) {
+      this.field.placeholder = value;
+    },
+    setDisabled () {
+      this.field.disabled = true;
+    },
+    removeDisabled () {
+      this.field.disabled = false;
+    },
+    setRequired () {
+      this.field.required = true;
+    },
+    removeRequired () {
+      this.field.required = false;
+    },
     onFocus() {
-      this.focused = true;
+      this.field.focused = true;
     },
     onBlur() {
-      this.focused = false;
+      this.field.focused = false;
     },
-    onChange() {
-
+    onChange(event) {
+      this.$emit('vu-on-change', event);
     },
-    onClickClear() {
-      this.model = '';
+    onClickClear(event) {
+      this.$emit('vu-clear-click', event);
     },
-    onClickLink() {
-
+    onClickLink(event) {
+      this.$emit('vu-clear-link', event);
     }
-  }
+  },
 };

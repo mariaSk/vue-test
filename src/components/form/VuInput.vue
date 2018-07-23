@@ -1,5 +1,5 @@
 <template>
-    <div class="vu-text-input" :class="stateClasses">
+    <div class="vu-text-input" :class="[stateClasses, size]">
         <label v-show="!!label" class="vu-text-input__label">{{ label }}</label>
         <div class="vu-text-input__control">
             <input
@@ -8,7 +8,25 @@
                 v-bind="attributes"
                 v-on="listeners"
                 @focus="onFocus"
-                @blur="onBlur">
+                @blur="onBlur"
+                @change="onChange"
+            >
+            <div class="vu-text-input__buttons">
+                <button
+                    class="vu-text-input__button vu-text-input__button-link"
+                    v-if="link"
+                    @click="onClickLink"
+                >
+                    <vu-icon icon='link' size="sm"></vu-icon>
+                </button>
+                <button
+                    class="vu-text-input__button vu-text-input__button-clear"
+                    v-if="clear"
+                    @click="onClickClear"
+                >
+                    <vu-icon icon='times' size="sm"></vu-icon>
+                </button>
+            </div>
         </div>
     </div>
 </template>
@@ -30,11 +48,6 @@
           default: 'text',
         },
       },
-      data() {
-        return {
-          //model: '',
-        }
-      },
       computed: {
         listeners () {
           let l = {...this.$listeners};
@@ -42,9 +55,6 @@
           return l;
         }
       },
-      methods: {
-
-      }
     };
 </script>
 
