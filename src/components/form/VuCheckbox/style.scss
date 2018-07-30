@@ -1,0 +1,115 @@
+@import "../../../shared/styles/mixins";
+
+.vu-helper-hidden-accessible {
+  position: absolute;
+  margin: -1px;
+  border: 0;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  clip: rect(0 0 0 0);
+  overflow: hidden;
+}
+
+.vu-checkbox {
+  position: relative;
+  vertical-align: middle;
+  cursor: pointer;
+
+  &__block {
+    vertical-align: middle;
+    line-height: 22px;
+    cursor: pointer;
+  }
+
+  &__icon {
+    position: relative;
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 10px;
+    width: 14px;
+    height: 14px;
+    border-radius: 3px;
+    border: 1px solid $blueGrey-400;
+    background: $white;
+  }
+
+  &__label {
+    display: inline-block;
+    margin-right: 20px;
+    @include font(10px, $baseFont, $blueGrey-700, 1.2, 500, normal, 0.56px);
+    cursor: pointer;
+  }
+
+  &.has-value {
+    .vu-checkbox__icon {
+      &--icon {
+        display: block;
+        position: relative;
+        top: 1px;
+        left: 1px;
+        font-size: 10px;
+        color: $white;
+      }
+    }
+
+    &.cyan {
+      .vu-checkbox__icon {
+        border-color: $cyan-600;
+        background: $cyan-600;
+      }
+    }
+
+    &.green {
+      .vu-checkbox__icon {
+        border-color: $green-600;
+        background: $green-600;
+      }
+    }
+
+    &.light-blue {
+      .vu-checkbox__icon {
+        border-color: $lightBlue-600;
+        background: $lightBlue-600;
+      }
+    }
+
+    &.teal {
+      .vu-checkbox__icon {
+        border-color: $teal-600;
+        background: $teal-600;
+      }
+    }
+  }
+
+  &.disabled {
+    .vu-checkbox__block {
+      cursor: default;
+    }
+
+    .vu-checkbox__icon {
+      border-color: $blueGrey-100;
+      background: $blueGrey-100;
+    }
+
+    .vu-checkbox__label {
+      color: $blueGrey-400;
+      cursor: default;
+    }
+  }
+
+  &.required {
+    .vu-checkbox__label {
+      &:after {
+        content: '*';
+        color: #d32f2f;
+        margin-left: 3px;
+      }
+    }
+  }
+}
+
+.vu-checkbox-group__label {
+  margin-right: 15px;
+  @include font(14px, $baseFont, $blueGrey-900, $weight: 500);
+}

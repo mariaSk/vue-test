@@ -113,7 +113,7 @@
 </template>
 
 <script>
-    import VuInput from '../../components/form/VuInput';
+    import VuInput from '../../components/form/VuInput/VuInput';
 
     export default {
       name: 'InputTextPage',
